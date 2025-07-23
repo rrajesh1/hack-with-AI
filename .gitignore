@@ -1,5 +1,10 @@
-# Environment variables
+# Environment variables and configuration
 .env
+config.json
+config.yaml
+config.yml
+settings.json
+.config.json
 
 # Python
 __pycache__/

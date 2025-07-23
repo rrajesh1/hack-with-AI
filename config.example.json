@@ -1,0 +1,21 @@
+{
+  "slack": {
+    "bot_token": "xoxb-your-bot-token-here",
+    "app_token": "xapp-your-app-token-here"
+  },
+  "environment": "development",
+  "bot": {
+    "name": "Awesome Slackbot",
+    "version": "1.0.0",
+    "debug": true
+  },
+  "features": {
+    "welcome_messages": true,
+    "reaction_responses": true,
+    "joke_commands": true
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  }
+} 

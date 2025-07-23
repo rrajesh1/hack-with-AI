@@ -5,15 +5,15 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 # Import from our slack_client module
 from slack_client import app, config
 
-# Load bot extensions if available
+# Load organized listeners
 try:
-    from bot_extensions import register_extensions
-    register_extensions(app)
-    print("🔧 Bot extensions loaded successfully!")
-except ImportError:
-    print("ℹ️  No bot extensions found. Using basic functionality only.")
+    from listeners import register_all_listeners
+    register_all_listeners(app)
+    print("🔧 All listeners registered successfully!")
+except ImportError as e:
+    print(f"⚠️  Warning: Could not load listeners: {e}")
 except Exception as e:
-    print(f"⚠️  Warning: Could not load bot extensions: {e}")
+    print(f"⚠️  Warning: Error loading listeners: {e}")
 
 @app.message("hello")
 def message_hello(message, say):
