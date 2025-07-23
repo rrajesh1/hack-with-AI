@@ -10,6 +10,16 @@ load_dotenv()
 # Initialize the Slack app
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
+# Load bot extensions if available
+try:
+    from bot_extensions import register_extensions
+    register_extensions(app)
+    print("🔧 Bot extensions loaded successfully!")
+except ImportError:
+    print("ℹ️  No bot extensions found. Using basic functionality only.")
+except Exception as e:
+    print(f"⚠️  Warning: Could not load bot extensions: {e}")
+
 @app.message("hello")
 def message_hello(message, say):
     """Respond to 'hello' messages"""
