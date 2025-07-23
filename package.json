@@ -1,0 +1,25 @@
+{
+  "name": "awesome-slackbot",
+  "version": "1.0.0",
+  "description": "A helpful Slack bot built with Python and Slack Bolt",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python slackbot.py",
+    "test": "python test_integration.py"
+  },
+  "keywords": [
+    "slack",
+    "bot",
+    "python",
+    "bolt"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "python": ">=3.8"
+  },
+  "devDependencies": {
+    "@slack/cli-hooks": "^1.2.1"
+  }
+}

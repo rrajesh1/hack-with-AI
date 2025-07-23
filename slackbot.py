@@ -1,14 +1,9 @@
 import os
 import re
-from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
-
-# Initialize the Slack app
-app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
+# Import from our slack_client module
+from slack_client import app, config
 
 # Load bot extensions if available
 try:
@@ -93,20 +88,11 @@ def custom_error_handler(error, body):
 
 # Start the app
 if __name__ == "__main__":
-    # Check if required environment variables are set
-    if not os.environ.get("SLACK_BOT_TOKEN"):
-        print("❌ Error: SLACK_BOT_TOKEN environment variable is required")
-        print("Please check your .env file and Slack app configuration")
-        exit(1)
-    
-    if not os.environ.get("SLACK_APP_TOKEN"):
-        print("❌ Error: SLACK_APP_TOKEN environment variable is required")
-        print("Please check your .env file and Slack app configuration")
-        exit(1)
+    # Configuration is already validated by slack_client module
     
     print("🚀 Starting Slackbot...")
     print("Bot is running and ready to receive events!")
     
     # Start the app using Socket Mode
-    handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
+    handler = SocketModeHandler(app, config.app_token)
     handler.start() 
